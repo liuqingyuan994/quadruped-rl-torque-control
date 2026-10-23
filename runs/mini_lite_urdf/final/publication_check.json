@@ -1,0 +1,30 @@
+{
+  "status": "PASS",
+  "policy_sha256": "20fef01ba116c39af4e28c96df092ee3c50f976855fcfc86bc0d4329d51ccac3",
+  "mjcf_sha256": "81924c3eb55fae38c3a185c23393ef3ce9fb0a13dd5c33ec0f44e2b0973aa3b5",
+  "frozen_acceptance": "PASS_9_OF_9",
+  "fresh_baseline": "PASS_9_OF_9",
+  "checkpoint_compatibility": {
+    "SB3_checkpoint_load": "PASS",
+    "observations": 67,
+    "actions": 12,
+    "test_observations": 32,
+    "max_normalized_action_difference": 3.5762786865234375e-07,
+    "reward_version": 5
+  },
+  "interface_checks": 14,
+  "changed_tensors": [
+    "action_net.weight"
+  ],
+  "configuration_changed": false,
+  "published_files_verified": 173,
+  "default_entry_replay": {
+    "status": "PASS",
+    "policy_sha256": "20fef01ba116c39af4e28c96df092ee3c50f976855fcfc86bc0d4329d51ccac3",
+    "steps": 500,
+    "observations": 67,
+    "actions": 12,
+    "default_entry": "D:\\Download\\桌面\\rl\\main.py",
+    "model_sha256": "81924c3eb55fae38c3a185c23393ef3ce9fb0a13dd5c33ec0f44e2b0973aa3b5"
+  }
+}

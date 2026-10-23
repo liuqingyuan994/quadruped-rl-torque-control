@@ -1,0 +1,27 @@
+{
+  "active": false,
+  "pid": 244,
+  "generation": 5,
+  "episodes": 908,
+  "steps": 5448000,
+  "best_score": -13.932760102212379,
+  "feasible_candidates": 15,
+  "ratios": {
+    "roll_std_rad": 0.9976958218370505,
+    "pitch_std_rad": 0.943448564483772,
+    "height_std_m": 0.8512324061047185,
+    "roll_rate_rms_rad_s": 0.9939914375278319,
+    "pitch_rate_rms_rad_s": 0.9540977042551674,
+    "vertical_speed_rms_m_s": 0.8479163488303625,
+    "roll_HF8_rad": 1.044724224712291,
+    "pitch_HF8_rad": 0.8828173938315719,
+    "height_HF8_m": 0.9409552317983948,
+    "HF10_rad": 0.9437041757742471,
+    "acceleration_rms_rad_s2": 0.9262596606989532,
+    "torque_rate_rms_Nm_s": 0.9560837602778551,
+    "yaw_gait_rms_rad": 1.0201584031328705,
+    "lateral_gait_rms_m": 0.9579405611450562,
+    "cross_track_rmse_m": 0.8283408301368106
+  },
+  "seconds": 66.3192753000003
+}

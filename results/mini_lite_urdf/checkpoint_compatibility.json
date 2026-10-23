@@ -1,0 +1,8 @@
+{
+  "SB3_checkpoint_load": "PASS",
+  "observations": 67,
+  "actions": 12,
+  "test_observations": 32,
+  "max_normalized_action_difference": 1.7881393432617188e-07,
+  "reward_version": 5
+}

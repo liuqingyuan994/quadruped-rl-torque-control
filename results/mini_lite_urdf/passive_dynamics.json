@@ -1,0 +1,18 @@
+{
+  "test": "2_second_passive_drop_without_controller",
+  "finite_state": true,
+  "simulation_seconds": 2.0000000000000013,
+  "steps": 1000,
+  "contacts_at_end": 8,
+  "warnings": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "standing_success": false
+}

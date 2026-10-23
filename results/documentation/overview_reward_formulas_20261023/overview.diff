@@ -1,0 +1,270 @@
+--- overview.before.md
++++ overview.updated.md
+@@ -205,104 +205,180 @@
+ | `torque_rate`        | $-10^{-4}\operatorname{mean}(\dot u_t^2)\Delta t$       | 惩罚缩放动作的变化率过大   |
+ | `terminal`           | 失败为 −50；否则成功为 +100；其余为 0                                | 给出一次性的回合结束反馈   |
+ 
+-torque` 与 `torque_rate` 的名字需要结合公式理解：它们分别使用缩放动作 $u$ 及其变化率；[评估模块](D:/Download/桌面/rl/purequad/evaluate.py:71) 记录的力矩变化率则基于实际 N·m 力矩。
++`torque` 与 `torque_rate` 的名字需要结合公式理解：它们分别使用缩放动作 $u$ 及其变化率；[评估模块](D:/Download/桌面/rl/purequad/evaluate.py:71) 记录的力矩变化率则基于实际 N·m 力矩。
+ 
+ `pose` 直接比较中立关节姿态。CEM 搜索、平稳性优化和 PPO 训练中的候选选择，还会在环境回报之外计算抬脚、腾空比例、前进量等约束扣分。因此应分别查看**环境单步奖励、候选选择分数和最终验收条件**。源码详解见 [[机器狗学习/相关项目/Mujoco仿真/assets/env.py|env.py 笔记]]、[[机器狗学习/相关项目/Mujoco仿真/assets/cem.py|cem.py 笔记]] 与 [[机器狗学习/相关项目/Mujoco仿真/assets/smooth_train.py|smooth_train.py 笔记]]。
+ 
+ #### 五个奖励版本分别做什么
+ 
+-当前环境实现了 **`reward_version=1～5` 五种奖励配置**。它们在同一个 `step()` 中，按基础项和后续条件分支组织。奖励版本用于选择评分项与系数；训练流程编号 `phase` 用于选择训练步骤，二者需要分别对应。当前默认策略保存的是 `stage='path'`、`reward_version=5`、`reference_reward=False`，上面的 20 项表列出其最终生效结果。
+-
+-| 奖励版本 | 主要用途 | 本版本的主要设置或调整 |
+-| --- | --- | --- |
+-| 1 | 提供基础站立与运动目标 | 直立、目标高度、目标速度、中立关节姿态，以及接触、能耗、动作幅值和突变等评分；按任务启用前进与路径误差项 |
+-| 2 | 加强速度跟踪与路径纠偏 | 改用平均速度评分，增加显式速度误差惩罚、竖直速度惩罚；降低前进增量奖励，运动任务也计入横向误差 |
+-| 3 | 更严格地保持机身姿态和高度 | 收紧直立与高度奖励的误差范围，增加竖直速度接近零的正奖励 |
+-| 4 | 加强关节与机身运动的平滑性 | 增加关节加速度、缩放动作变化率、机身转动速度惩罚，并加强高度保持与竖直速度约束 |
+-| 5 | 针对当前 URDF 调整平滑惩罚强度 | 保留第 4 版的评分结构，降低关节加速度和缩放动作变化率两项系数，调整平稳性与正常行走之间的权衡 |
+-
+-下面逐项说明。符号沿用本节前面的定义，$u$ 为缩放动作，$\Delta t=0.002$ s，$m_t$ 为前进相关系数。
+-
+-**版本 1：基础奖励，先明确怎样的运动值得鼓励。**
+-
+-基础项鼓励机身水平、高度接近 0.31 m、速度接近目标、关节适度接近中立姿态，并抑制非足部接触、关节高速运动、机械功率、动作幅值及动作突变。它同时包含运动任务的基础评分：非站立任务使用航向误差惩罚和 $20\Delta s$ 的前进奖励；此时横向误差惩罚只在 `stage='path'` 启用。站立任务的航向、横向与前进项为 0。
+-
+-版本 1 的速度奖励使用当前步速度：
+-
+-$$
+-r_{\mathrm{velocity}}=c_v\exp\!\left[-\frac{(v_x-v^\star)^2+v_y^2}{0.04^2}\right]\Delta t,
+-\qquad
+-c_v=\begin{cases}2,&\texttt{stage=stand}\\10,&\text{其他任务}\end{cases}
+-$$
+-
+-站立时目标速度始终为 0；运动和路径任务在前 0.6 s 的奖励目标速度为 0，之后为 0.13 m/s。默认七阶段流程首先使用版本 1 训练站立。代码见 [env.py 基础奖励](D:/Download/桌面/rl/purequad/env.py:128)。
+-
+-**版本 2：更关注持续的速度跟踪和纠偏。**
+-
+-速度评分改用一阶平均速度，误差定义为：
+-
+-$$
+-E_v=(\bar v_x-v^\star)^2+\bar v_y^2
+-$$
+-
+-速度正奖励使用 $10\exp[-E_v/0.04^2]\Delta t$，并额外加入：
+-
+-$$
+-r_{\mathrm{speed\ error}}=-150E_v\Delta t
+-$$
+-
+-同时，将前进奖励从 $20\Delta s$ 降至 $2\Delta s$，降低单纯追求前进距离的激励；`motion` 和 `path` 都启用 $-120e_y^2\Delta t$ 的横向误差惩罚，并加入 $-10v_z^2\Delta t$ 的竖直速度惩罚。平均速度的计算公式见本节前文。代码见 [env.py 版本 2 分支](D:/Download/桌面/rl/purequad/env.py:141)。
+-
+-**版本 3：进一步减少身体倾斜和上下起伏。**
+-
+-在版本 2 的基础上，提高直立奖励的峰值，并收紧姿态、高度误差对应的指数宽度：
+-
+-| 奖励项 | 基础设置 | 版本 3 设置 |
+-| --- | --- | --- |
+-| 直立 | $6\exp[-(\rho^2+\vartheta^2)/0.02]\,m_t\Delta t$ | $8\exp[-(\rho^2+\vartheta^2)/0.002]\,m_t\Delta t$ |
+-| 高度 | $4\exp[-((h-0.31)/0.02)^2]\,m_t\Delta t$ | $5\exp[-((h-0.31)/0.008)^2]\,m_t\Delta t$ |
+-
+-此外，加入竖直速度接近零的正奖励：
+-
+-$$
+-r_{\mathrm{vertical\ quiet}}=2\exp[-(v_z/0.015)^2]\Delta t
+-$$
+-
+-高度奖励的误差宽度从 20 mm 缩小到 8 mm，表示偏离目标后奖励衰减得更快；指数宽度本身不构成终止阈值。默认流程第 2～6 阶段使用版本 3，其中第 4 阶段从前一阶段继承该配置。代码见 [env.py 版本 3 分支](D:/Download/桌面/rl/purequad/env.py:148)。
+-
+-**版本 4：对关节和机身运动增加平滑性约束。**
+-
+-在版本 3 的基础上新增：
+-
+-$$
+-r_{\mathrm{joint\ acceleration}}=-0.0025\,\operatorname{mean}(\ddot q^2)\Delta t
+-$$
+-
+-$$
+-r_{\mathrm{torque\ rate}}=-0.1\,\operatorname{mean}(\dot u^2)\Delta t,
+-\qquad \dot u=\frac{u_t-u_{t-1}}{\Delta t}
+-$$
+-
+-$$
+-r_{\mathrm{body\ rotation\ rate}}=-2(\omega_1^2+\omega_2^2)\Delta t
+-$$
+-
+-三项分别抑制关节速度的剧烈变化、相邻动作的剧烈变化，以及机身横滚和俯仰方向的快速转动。`torque_rate` 奖励使用缩放动作的变化率；它尚未乘各关节 N·m 力矩限值。
+-
+-此版本还将高度奖励改为 $6\exp[-((h-0.31)/0.006)^2]\,m_t\Delta t$，将竖直速度惩罚改为 $-40v_z^2\Delta t$。代码见 [env.py 版本 4 分支](D:/Download/桌面/rl/purequad/env.py:154)。
+-
+-**版本 5：保留平滑要求，重新调整两项惩罚系数。**
+-
+-源码注明这一调整针对当前提供的 URDF。相对于版本 4，最终覆盖的两项为：
++下面给出 **`reward_version=1～5` 各自最终生效的完整单步奖励函数**。公式按 `stage='path'`、`reference_reward=False` 整理；站立与基础运动任务的区别在本段末尾说明。当前默认策略采用版本 5，前面的 20 项表与下述 $r_t^{(5)}$ 对应。
++
++| 奖励版本 | 主要目标 |
++| --- | --- |
++| 1 | 基础姿态、高度、速度与沿路径前进 |
++| 2 | 加强持续速度跟踪、横向纠偏和竖直速度约束 |
++| 3 | 更严格地保持机身水平与目标高度 |
++| 4 | 增加关节和机身运动的平滑性惩罚 |
++| 5 | 保留平滑要求，针对当前 URDF 调整两项差分惩罚系数 |
++
++**公式中的符号。** 沿用本节前面的 $h,\rho,\vartheta,e_y,e_\psi,q,q_0,u_t,\Delta s$ 等定义；$q_0$ 为中立关节姿态，$\operatorname{mean}$ 对十二个关节求平均。所有状态项对应当前控制步；为便于阅读，部分状态量省略下标 $t$。定义：
++
++$$
++S=\rho^2+\vartheta^2,\qquad
++E_0=(v_x-v^\star)^2+v_y^2
++$$
++
++$$
++E_{\mathrm{avg}}=E_v=(\bar v_x-v^\star)^2+\bar v_y^2
++$$
++
++$E_0$ 使用瞬时速度，$E_{\mathrm{avg}}$ 使用前文定义的一阶平均速度。路径任务的目标速度在前 0.6 s 为 0，之后为 0.13 m/s；直立、高度项使用前进相关系数 $m_t=0.1+0.9\operatorname{clip}(v_x/0.13,0,1)$。
++
++**五个版本共用的部分。** 将各版相同的九项合并为 $C_t$：
++
++$$
++\begin{aligned}
++C_t={}&\Delta t\Big[
++1-40n_{\mathrm{bad}}
++-0.0002\sum_i\dot q_i^2
++-0.00005P\\
++&\quad-0.02\operatorname{mean}(u_t^2)
++-8e_\psi^2\\
++&\quad+2\exp\left(-\frac{\operatorname{mean}((q-q_0)^2)}{0.02}\right)
++\Big]\\
++&-0.02\operatorname{mean}\big((u_t-u_{t-1})^2\big)
+++r_{\mathrm{terminal}}
++\end{aligned}
++$$
++
++这九项依次对应持续运行、非足部触地、关节速度、机械功率、动作幅值、航向误差、中立姿态、相邻动作突变和终止反馈。一次性终止奖励为：
++
++$$
++r_{\mathrm{terminal}}=
++\begin{cases}
++-50,&\text{失败}\\
+++100,&\text{未失败且到达路径终点}\\
++0,&\text{其他情况，包括单纯超时}
++\end{cases}
++$$
++
++$P=\sum_i\lvert\tau_i\dot q_i^{\mathrm{pre}}\rvert$ 使用物理步进前的关节速度。$u_t=0.4\operatorname{clip}(a_t,-1,1)$ 是缩放动作，尚未乘关节力矩限值。共同项 $C_t$ 已包含航向误差与终止奖励，下面的总公式不再重复添加它们。
++
++**版本 1：基础奖励。**
++
++$$
++\boxed{
++\begin{aligned}
++r_t^{(1)}=C_t+\Delta t\Big[&6m_t\exp\left(-\frac{S}{0.02}\right)\\
++&+4m_t\exp\left(-\left(\frac{h-0.31}{0.02}\right)^2\right)\\
++&+10\exp\left(-\frac{E_0}{0.04^2}\right)
++-120e_y^2
++\Big]+20\Delta s
++\end{aligned}}
++$$
++
++该版鼓励身体水平、高度合适、瞬时速度接近目标，并沿路径前进。速度评分使用 $E_0$，前进增量系数为 20。代码见 [env.py 基础奖励](D:/Download/桌面/rl/purequad/env.py:128)。
++
++**版本 2：加强平均速度跟踪与纠偏。**
++
++$$
++\boxed{
++\begin{aligned}
++r_t^{(2)}=C_t+\Delta t\Big[&6m_t\exp\left(-\frac{S}{0.02}\right)\\
++&+4m_t\exp\left(-\left(\frac{h-0.31}{0.02}\right)^2\right)\\
++&+10\exp\left(-\frac{E_{\mathrm{avg}}}{0.04^2}\right)\\
++&-150E_{\mathrm{avg}}
++-120e_y^2-10v_z^2
++\Big]+2\Delta s
++\end{aligned}}
++$$
++
++速度奖励改用一阶平均速度，并增加显式速度误差惩罚 $-150E_{\mathrm{avg}}\Delta t$ 和竖直速度惩罚 $-10v_z^2\Delta t$。前进增量系数降为 2，减少单纯追求前进距离的激励。代码见 [env.py 版本 2 分支](D:/Download/桌面/rl/purequad/env.py:141)。
++
++**版本 3：加强机身稳定性。**
++
++$$
++\boxed{
++\begin{aligned}
++r_t^{(3)}=C_t+\Delta t\Big[&8m_t\exp\left(-\frac{S}{0.002}\right)\\
++&+5m_t\exp\left(-\left(\frac{h-0.31}{0.008}\right)^2\right)\\
++&+10\exp\left(-\frac{E_{\mathrm{avg}}}{0.04^2}\right)\\
++&-150E_{\mathrm{avg}}
++-120e_y^2-10v_z^2\\
++&+2\exp\left(-\left(\frac{v_z}{0.015}\right)^2\right)
++\Big]+2\Delta s
++\end{aligned}}
++$$
++
++直立奖励峰值从 6 增至 8，姿态误差增大后奖励衰减更快；高度奖励宽度从 20 mm 收紧至 8 mm，并增加竖直速度接近零的正奖励。指数奖励的宽度决定评分衰减速度，本身不构成终止阈值。代码见 [env.py 版本 3 分支](D:/Download/桌面/rl/purequad/env.py:148)。
++
++**版本 4：增加关节与机身平滑性惩罚。**
++
++$$
++\boxed{
++\begin{aligned}
++r_t^{(4)}=C_t+\Delta t\Big[&8m_t\exp\left(-\frac{S}{0.002}\right)\\
++&+6m_t\exp\left(-\left(\frac{h-0.31}{0.006}\right)^2\right)\\
++&+10\exp\left(-\frac{E_{\mathrm{avg}}}{0.04^2}\right)\\
++&-150E_{\mathrm{avg}}
++-120e_y^2-40v_z^2\\
++&+2\exp\left(-\left(\frac{v_z}{0.015}\right)^2\right)\\
++&-0.0025\operatorname{mean}(\ddot q^2)\\
++&-0.1\operatorname{mean}(\dot u_t^2)
++-2(\omega_1^2+\omega_2^2)
++\Big]+2\Delta s
++\end{aligned}}
++$$
++
++新增的后三项分别抑制关节速度的剧烈变化、相邻动作的剧烈变化，以及机身横滚、俯仰方向的快速转动。高度奖励宽度收紧至 6 mm，竖直速度惩罚系数增至 40。其中：
++
++$$
++\ddot q=\frac{\dot q_t-\dot q_{t-1}}{\Delta t},\qquad
++\dot u_t=\frac{u_t-u_{t-1}}{\Delta t}
++$$
++
++$\omega_1,\omega_2$ 直接对应 `qvel[3:5]` 两个分量。`torque_rate` 奖励实际使用 $\dot u_t$，不是按 N·m 计算的实际力矩变化率。代码见 [env.py 版本 4 分支](D:/Download/桌面/rl/purequad/env.py:154)。
++
++**版本 5：针对当前 URDF 调整平滑惩罚强度。**
++
++$$
++\boxed{
++\begin{aligned}
++r_t^{(5)}=C_t+\Delta t\Big[&8m_t\exp\left(-\frac{S}{0.002}\right)\\
++&+6m_t\exp\left(-\left(\frac{h-0.31}{0.006}\right)^2\right)\\
++&+10\exp\left(-\frac{E_{\mathrm{avg}}}{0.04^2}\right)\\
++&-150E_{\mathrm{avg}}
++-120e_y^2-40v_z^2\\
++&+2\exp\left(-\left(\frac{v_z}{0.015}\right)^2\right)\\
++&-10^{-6}\operatorname{mean}(\ddot q^2)\\
++&-10^{-4}\operatorname{mean}(\dot u_t^2)
++-2(\omega_1^2+\omega_2^2)
++\Big]+2\Delta s
++\end{aligned}}
++$$
++
++版本 5 与版本 4 只有两项系数不同，其余奖励保持相同：
+ 
+ | 惩罚项 | 版本 4 的系数 | 版本 5 最终系数 | 降低比例 |
+ | --- | ---: | ---: | ---: |
+ | $\operatorname{mean}(\ddot q^2)\Delta t$ | 0.0025 | $10^{-6}$ | 2500 倍 |
+-| $\operatorname{mean}(\dot u^2)\Delta t$ | 0.1 | $10^{-4}$ | 1000 倍 |
+-
+-控制周期仅为 2 ms，差分求导后再平方会放大这些量；惩罚过强可能压制正常抬腿和动作调整。这解释了为何需要对系数进行权衡。版本 5 保留版本 4 的机身转动速度惩罚、高度奖励和竖直速度惩罚，两项差分惩罚改用上表的最终系数。代码见 [env.py 版本 5 分支](D:/Download/桌面/rl/purequad/env.py:161)。
++| $\operatorname{mean}(\dot u_t^2)\Delta t$ | 0.1 | $10^{-4}$ | 1000 倍 |
++
++源码注明这一调整针对当前提供的 URDF。控制周期只有 2 ms，差分求导再平方可能产生较大数值，惩罚过强可能压制正常抬腿和动作调整；版本 5 通过较小系数调整这一权衡。它保留机身转动速度、高度和竖直速度要求，也保留两项差分惩罚。代码见 [env.py 版本 5 分支](D:/Download/桌面/rl/purequad/env.py:161)。
+ 
+ 这些系数是代码设置的奖励参数，训练过程中不会因选择版本 5 而自动学习新的奖励权重。
++
++**站立与基础运动任务怎样对应上述公式。**
++
++| 环境任务 | 实际使用规则 |
++| --- | --- |
++| `path` | 使用上面对应版本的公式；满足终点条件且未失败时，终止奖励为 +100 |
++| `motion` | 版本 1 的横向误差项为 0；版本 2～5 仍使用横向误差惩罚；不启用到达终点的成功判定，因此没有成功终止奖励 |
++| `stand` | 使用基础站立奖励：$m_t=1$、目标速度为 0、瞬时速度正奖励系数为 2；航向、横向和前进奖励为 0；跳过版本 2～5 的全部运动调整分支 |
++
++因此，站立任务即使设置较高的奖励版本编号，也仍使用基础站立奖励，不能直接将上面某个路径总公式代入站立任务。不同任务均有失败终止惩罚，具体结束判断见 4.4 节。
++
++上式均为环境返回的单步奖励。大多数连续项乘以 $\Delta t$；前进项使用距离增量，动作突变和一次性终止项没有再乘 $\Delta t$。CEM 在回合结束后计算的抬脚、腾空比例和前进量等约束扣分另外计入候选评分，详见 5.1 节。
+ 
+ #### 版本 2、4 在哪里生效
+ 

@@ -1,0 +1,40 @@
+{
+  "args": {
+    "source": "E:\\Codex\\2026-10-19\\x20-2\\outputs\\overview_training_analysis_20261023\\source_policy.zip",
+    "stage": "path",
+    "steps": 262144,
+    "envs": 4,
+    "seconds": 12.0,
+    "output": "D:\\Download\\\u684c\u9762\\rl\\runs\\mini_lite_urdf\\ppo_curves_20261023",
+    "reference": false,
+    "learning_rate": 1e-05,
+    "log_std": -4.5,
+    "n_steps": 1024,
+    "epochs": 4,
+    "eval_freq": 32768,
+    "eval_seconds": 12.0,
+    "seed": 61
+  },
+  "environment": {
+    "robot_model": "mini_lite_urdf_20261019_v1",
+    "stage": "path",
+    "physics_dt": 0.002,
+    "frame_skip": 1,
+    "seconds": 12.0,
+    "speed": 0.13,
+    "height": 0.31,
+    "period": 0.7,
+    "clock_delay": 0.6,
+    "action_scale": 0.4,
+    "reset_noise": 0.002,
+    "reference_reward": false,
+    "min_height": 0.235,
+    "joint_margin": 0.12,
+    "joint_speed_limit_rad_s": 20.0,
+    "foot_clearance_min_m": 0.009,
+    "fall_penalty": 50.0,
+    "reward_version": 5,
+    "policy_variant": "path"
+  },
+  "training": "PPO rewards only; 12 full joint torques"
+}

@@ -1,0 +1,43 @@
+{
+  "command": [
+    "D:/Software/anaconda3/envs/quadruped_rl/python.exe",
+    "-u",
+    "-B",
+    "-X",
+    "utf8",
+    "-m",
+    "purequad.validate",
+    "--model",
+    "D:\\Download\\桌面\\rl\\runs\\mini_lite_urdf\\ppo_clearance_20261023\\policy.zip",
+    "--workers",
+    "1",
+    "--seconds",
+    "75",
+    "--output",
+    "D:\\Download\\桌面\\rl\\results\\mini_lite_urdf\\ppo_clearance_20261023"
+  ],
+  "policy": "D:\\Download\\桌面\\rl\\runs\\mini_lite_urdf\\ppo_clearance_20261023\\policy.zip",
+  "sha256": "8a5a5dae9137494182496e9a69db97b686e8817284dea359f64a79f897abd5f2",
+  "source_sha256": "b9f08ee9607256c5563a14641da66f9a5083b4cf5d336004c085aa094954e046",
+  "parameters": {
+    "hip_gain": 1.01,
+    "knee_gain": 1.01,
+    "hip_phase": 0.0,
+    "knee_phase": 0.0
+  },
+  "criteria_unchanged": true,
+  "source_code_sha256": {
+    "purequad/env.py": "b224b61d129e56fae2a38205476e442531df11a56972ec96d7a005d8c63e3186",
+    "purequad/validate.py": "a638300a0486fe199e9cea38cd14b9cd6f80568f4aea4fe79a4f325a4f758033",
+    "purequad/evaluate.py": "d1f3b6fe75b20d0428065965f5010cf13b2a6f3dd0fcb035027c0683d718da76"
+  },
+  "model_sha256": "81924c3eb55fae38c3a185c23393ef3ce9fb0a13dd5c33ec0f44e2b0973aa3b5",
+  "start_unix": 1792736081.3768597,
+  "pid": 35292,
+  "exit_code": 0,
+  "end_unix": 1792736331.910092,
+  "all_passed": true,
+  "pass_count": 9,
+  "report": "D:\\Download\\桌面\\rl\\results\\mini_lite_urdf\\ppo_clearance_20261023\\acceptance.json",
+  "report_sha256": "15e9115d06cd04ff77d99aaa5cfe72355a0129f20991dc0367d37a0e452732a6"
+}

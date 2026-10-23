@@ -1,0 +1,205 @@
+{
+  "date": "2026-10-19",
+  "destination": "E:\\机器狗文件\\model",
+  "status": "STATIC_STRUCTURE_AND_DEPENDENCIES_PASS_WITH_SOURCE_PHYSICS_ERROR",
+  "runtime_simulation": "NOT_RUN",
+  "dynamics_status": "SOURCE_URDF_INERTIA_INVALID; parameters preserved, not corrected",
+  "selected_source_files": 41,
+  "copied_without_changes": 40,
+  "changed_files": [
+    "mini_lite/urdf/MiniLiteC.urdf: mesh path normalization only"
+  ],
+  "urdf": {
+    "robot": "JueyingMiniLite",
+    "links": 18,
+    "joints": 17,
+    "actuated_joints": 12,
+    "tree_root": "BASE",
+    "connected_acyclic_tree": true,
+    "total_explicit_mass_kg": 10.009390004,
+    "resolved_mesh_references": 13,
+    "unique_meshes": 8,
+    "mesh_unit_checks": [
+      {
+        "file": "BASE.dae",
+        "unit_meter": 1,
+        "external_texture_count": 0
+      },
+      {
+        "file": "FL_HIP.dae",
+        "unit_meter": 1,
+        "external_texture_count": 0
+      },
+      {
+        "file": "FR_HIP.dae",
+        "unit_meter": 1,
+        "external_texture_count": 0
+      },
+      {
+        "file": "HL_HIP.dae",
+        "unit_meter": 1,
+        "external_texture_count": 0
+      },
+      {
+        "file": "HR_HIP.dae",
+        "unit_meter": 1,
+        "external_texture_count": 0
+      },
+      {
+        "file": "L_THIGH.dae",
+        "unit_meter": 1,
+        "external_texture_count": 0
+      },
+      {
+        "file": "R_THIGH.dae",
+        "unit_meter": 1,
+        "external_texture_count": 0
+      },
+      {
+        "file": "SHANK.dae",
+        "unit_meter": 1,
+        "external_texture_count": 0
+      }
+    ],
+    "positive_definite_inertias": 16,
+    "invalid_inertias": [
+      {
+        "link": "HR_HIP",
+        "eigenvalues": [
+          -5.004683998090037e-07,
+          0.00014978545894887087,
+          0.0002626607594509383
+        ],
+        "positive_definite": false,
+        "source_values": {
+          "ixx": 0.0001497,
+          "ixy": 1.1564e-07,
+          "ixz": 3.5848e-06,
+          "iyy": 0.00026266,
+          "iyz": -4.1425e-07,
+          "izz": -4.1425e-07
+        }
+      }
+    ],
+    "links_without_inertial": [
+      "BASE"
+    ],
+    "links_without_collision": [
+      "BASE_INER",
+      "FL_HIP",
+      "FL_SHANK",
+      "FR_HIP",
+      "FR_SHANK",
+      "HL_HIP",
+      "HL_SHANK",
+      "HR_HIP",
+      "HR_SHANK"
+    ]
+  },
+  "proto": {
+    "byte_identical_source_copies": 5,
+    "motor_names": [
+      "FL_HipX",
+      "FL_HipY",
+      "FL_Knee",
+      "FR_HipX",
+      "FR_HipY",
+      "FR_Knee",
+      "HL_HipX",
+      "HL_HipY",
+      "HL_Knee",
+      "HR_HipX",
+      "HR_HipY",
+      "HR_Knee"
+    ],
+    "embedded_geometry": true,
+    "external_texture_count": 0,
+    "camera_lidar_imu_nodes": 0,
+    "declared_version": "R2022a"
+  },
+  "webots_files": [
+    {
+      "file": "mini_lite/webots/protos/JueyingMiniLite.proto",
+      "lexical_brackets": "PASS",
+      "explicit_url_count": 0,
+      "controllers": [
+        "void"
+      ],
+      "declared_version": "#VRML_SIM R2022a utf8",
+      "runtime": "NOT_RUN; built-in Webots assets require Webots installation"
+    },
+    {
+      "file": "mini_lite/webots/reference_worlds/Figure.wbt",
+      "lexical_brackets": "PASS",
+      "explicit_url_count": 0,
+      "controllers": [],
+      "declared_version": "#VRML_SIM R2022a utf8",
+      "runtime": "NOT_RUN; built-in Webots assets require Webots installation"
+    },
+    {
+      "file": "mini_lite/webots/reference_worlds/mark_1.5_Supervisor - origin_BK.wbt",
+      "lexical_brackets": "PASS",
+      "explicit_url_count": 0,
+      "controllers": [
+        "<extern>",
+        "Supervisor"
+      ],
+      "declared_version": "#VRML_SIM R2022a utf8",
+      "runtime": "NOT_RUN; built-in Webots assets require Webots installation"
+    },
+    {
+      "file": "mini_lite/webots/reference_worlds/mark_1.5_Supervisor.wbt",
+      "lexical_brackets": "PASS",
+      "explicit_url_count": 0,
+      "controllers": [
+        "<extern>",
+        "Supervisor"
+      ],
+      "declared_version": "#VRML_SIM R2022a utf8",
+      "runtime": "NOT_RUN; built-in Webots assets require Webots installation"
+    },
+    {
+      "file": "mini_lite/webots/reference_worlds/mark_1.5_Supervisor修改.wbt",
+      "lexical_brackets": "PASS",
+      "explicit_url_count": 0,
+      "controllers": [
+        "<extern>",
+        "Supervisor"
+      ],
+      "declared_version": "#VRML_SIM R2022a utf8",
+      "runtime": "NOT_RUN; built-in Webots assets require Webots installation"
+    },
+    {
+      "file": "mini_lite/webots/reference_worlds/mark_1_basic_ops.wbt",
+      "lexical_brackets": "PASS",
+      "explicit_url_count": 0,
+      "controllers": [
+        "<extern>"
+      ],
+      "declared_version": "#VRML_SIM R2022a utf8",
+      "runtime": "NOT_RUN; built-in Webots assets require Webots installation"
+    },
+    {
+      "file": "mini_lite/webots/worlds/mark_0_init_model.wbt",
+      "lexical_brackets": "PASS",
+      "explicit_url_count": 0,
+      "controllers": [],
+      "declared_version": "#VRML_SIM R2022a utf8",
+      "runtime": "NOT_RUN; built-in Webots assets require Webots installation"
+    }
+  ],
+  "terrain": {
+    "stl_files": 17,
+    "cad_files": 7,
+    "binary_stl_structure": "PASS",
+    "units": "unspecified; no scaling or rotation applied",
+    "solidworks_parse": "NOT_RUN"
+  },
+  "cautions": [
+    "Original URDF HR_HIP izz=-4.1425e-7 yields a negative inertia eigenvalue. PROTO counterpart izz=0.00014559; not substituted automatically.",
+    "URDF masses and motor effort limits differ from supplied motion manual; no physical parameters changed.",
+    "Core PROTO has motor position sensors but no camera, lidar, or IMU nodes.",
+    "Reference scenes may embed distinct robot variants and require original controllers.",
+    "No Webots, ROS, MuJoCo import, training, or hardware validation was run."
+  ]
+}

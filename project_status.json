@@ -1,0 +1,320 @@
+{
+  "state": "URDF_LATERAL_SWAY_ROUND4_ACCEPTANCE_PASS",
+  "robot_model": "mini_lite_urdf_20261019_v1",
+  "all_passed": true,
+  "mass_kg": 10.009390004,
+  "control_period_s": 0.002,
+  "new_path_acceptance": "PASS_9_OF_9",
+  "accepted_current_policy": "runs/mini_lite_urdf/final/policy.zip",
+  "default_final_policy": "runs/mini_lite_urdf/final/policy.zip",
+  "mjcf_sha256": "81924c3eb55fae38c3a185c23393ef3ce9fb0a13dd5c33ec0f44e2b0973aa3b5",
+  "source_directory": "E:\\机器狗文件\\model",
+  "source_manual": "E:\\机器狗文件\\Mini Lite 运动SDK开发手册.pdf",
+  "report": "docs/MiniLite左右摆动专项优化报告_20261023.md",
+  "hardware_validation": "NOT_RUN",
+  "model": "runs/mini_lite_urdf/final/policy.zip",
+  "policy_sha256": "20fef01ba116c39af4e28c96df092ee3c50f976855fcfc86bc0d4329d51ccac3",
+  "acceptance": "results/mini_lite_urdf/lateral_sway_20261023_v4/final_acceptance/acceptance.json",
+  "latest_video": "videos/mini_lite_urdf/lateral_sway_20261023_v4/左右摆动专项优化_前后对照.mp4",
+  "final_policy_method": "Constrained lateral-yaw-roll neural actor weight optimization",
+  "camera": "stable; fixed height; 0.20 s horizontal tracking",
+  "display_fps": 60,
+  "lateral_comparison": {
+    "before_sha256": "794e5f656b4ea9ca6c7e6f0810328a7864faed09e00b94bb40bad5d175d9b2b1",
+    "after_sha256": "a1749528c337c2277b2097b2fba0237b2728cbc2a21fb8a3227603cb4b923576",
+    "before_pass": 9,
+    "after_pass": 9,
+    "definition": "Equal-weight mean over 9 full path cases; lateral/yaw gait and steady attitude: >=3 s at 500 Hz, Welch >=0.7 Hz; original acceptance metrics unchanged",
+    "yaw_gait_rms_rad": {
+      "before": 0.02698932404197967,
+      "after": 0.021442661488174464,
+      "decrease_percent": 20.55132075622875
+    },
+    "lateral_gait_rms_m": {
+      "before": 0.001902346716456167,
+      "after": 0.0011446362427739868,
+      "decrease_percent": 39.83030365220173
+    },
+    "steady_roll_std_rad": {
+      "before": 0.006662323557465669,
+      "after": 0.004734313025843284,
+      "decrease_percent": 28.93901076692522
+    },
+    "steady_pitch_std_rad": {
+      "before": 0.003606331226380283,
+      "after": 0.00421091364254399,
+      "decrease_percent": -16.764472762268532
+    },
+    "steady_roll_peak_to_peak_rad": {
+      "before": 0.033292166310060906,
+      "after": 0.026650265784457745,
+      "decrease_percent": 19.95034046071065
+    },
+    "steady_heading_peak_to_peak_rad": {
+      "before": 0.17096127383968693,
+      "after": 0.14143918304927863,
+      "decrease_percent": 17.268291307943585
+    },
+    "steady_heading_std_rad": {
+      "before": 0.034664427891252514,
+      "after": 0.03192895592507447,
+      "decrease_percent": 7.891294138070382
+    },
+    "joint_high_frequency_rms_rad": {
+      "before": 0.003146017898930414,
+      "after": 0.0034802112059986665,
+      "decrease_percent": -10.622740168829669
+    },
+    "joint_acceleration_rms_rad_s2": {
+      "before": 65.28517842322856,
+      "after": 64.19765569042652,
+      "decrease_percent": 1.6658034167447378
+    },
+    "torque_rate_rms_Nm_s": {
+      "before": 41.15866783869026,
+      "after": 39.26405026248748,
+      "decrease_percent": 4.603204320480437
+    },
+    "height_peak_to_peak_m": {
+      "before": 0.005951418589165018,
+      "after": 0.005938858981679723,
+      "decrease_percent": 0.21103552534786907
+    },
+    "duration_s": {
+      "before": 39.427555555557774,
+      "after": 40.78355555555943,
+      "decrease_percent": -3.4392190459053618
+    },
+    "cross_track_rmse_m": {
+      "before": 0.017314558165022434,
+      "after": 0.012526996252406076,
+      "decrease_percent": 27.650500041565195
+    }
+  },
+  "training_active": false,
+  "current_phase": "complete",
+  "cleanup_state": "COMPLETE",
+  "training_record": "runs/mini_lite_urdf/lateral_sway_20261023_v4",
+  "interface_check": "PASS_14_CURRENT_MODEL_GROUPS",
+  "post_publication_check": "PASS",
+  "cleanup_validation": "results/mini_lite_urdf/cleanup_validation.json",
+  "body_stability_comparison": {
+    "before_sha256": "17913bcdf9e5ea2ca35ec5084f423ed1b8ea6c6d4abb48154d368a63419ad206",
+    "after_sha256": "20fef01ba116c39af4e28c96df092ee3c50f976855fcfc86bc0d4329d51ccac3",
+    "before_passed": 9,
+    "after_passed": 9,
+    "measurement": "Equal mean of nine complete cases. Body and lateral/yaw >=3s; body cycle RMS>=0.7Hz, body HF>=8Hz, lateral/yaw HF>=0.7Hz; joint and other acceptance metrics use unchanged evaluate.py definitions.",
+    "metrics": {
+      "roll_cycle_rad": {
+        "before": 0.0022311223563466027,
+        "after": 0.0017323718766910148,
+        "decrease_percent": 22.354241498089642
+      },
+      "pitch_cycle_rad": {
+        "before": 0.0029392342255509553,
+        "after": 0.0028992015188464464,
+        "decrease_percent": 1.3620114503465564
+      },
+      "height_cycle_m": {
+        "before": 0.0009771349115264049,
+        "after": 0.0009327501728470302,
+        "decrease_percent": 4.542334753963528
+      },
+      "roll_std_rad": {
+        "before": 0.003641078457448837,
+        "after": 0.003432130253555372,
+        "decrease_percent": 5.738635031772066
+      },
+      "pitch_std_rad": {
+        "before": 0.002960204538480008,
+        "after": 0.002924030541682593,
+        "decrease_percent": 1.2220100444812365
+      },
+      "height_std_m": {
+        "before": 0.0009771441120020315,
+        "after": 0.0009330044143457186,
+        "decrease_percent": 4.517214719318807
+      },
+      "roll_rate_rms_rad_s": {
+        "before": 0.06957108491157797,
+        "after": 0.060180877738035994,
+        "decrease_percent": 13.497284375364494
+      },
+      "pitch_rate_rms_rad_s": {
+        "before": 0.07485409737023518,
+        "after": 0.07437330179774965,
+        "decrease_percent": 0.6423102934599245
+      },
+      "vertical_speed_rms_m_s": {
+        "before": 0.020528654120815795,
+        "after": 0.019505524843716787,
+        "decrease_percent": 4.98390820497856
+      },
+      "roll_HF8_rad": {
+        "before": 0.000525874538768287,
+        "after": 0.0004935608291015141,
+        "decrease_percent": 6.144756455115452
+      },
+      "pitch_HF8_rad": {
+        "before": 0.00042677154409068033,
+        "after": 0.0004203701867107662,
+        "decrease_percent": 1.499949438651882
+      },
+      "height_HF8_m": {
+        "before": 0.00012099259505228842,
+        "after": 0.00011635691220567571,
+        "decrease_percent": 3.8313773207437563
+      },
+      "yaw_gait_rms_rad": {
+        "before": 0.021041834522801398,
+        "after": 0.019743459548604944,
+        "decrease_percent": 6.170445703246575
+      },
+      "lateral_gait_rms_m": {
+        "before": 0.000841669380378264,
+        "after": 0.0008209294498340145,
+        "decrease_percent": 2.464142218756793
+      },
+      "joint_high_frequency_rms_rad": {
+        "before": 0.003511645972968495,
+        "after": 0.0034325576499557417,
+        "decrease_percent": 2.252172446241718
+      },
+      "joint_acceleration_rms_rad_s2": {
+        "before": 60.79129695402119,
+        "after": 60.9804673693544,
+        "decrease_percent": -0.3111800945393206
+      },
+      "torque_rate_rms_Nm_s": {
+        "before": 39.09303692346281,
+        "after": 39.2081227493866,
+        "decrease_percent": -0.29438957671439336
+      },
+      "height_peak_to_peak_m": {
+        "before": 0.004671744510120503,
+        "after": 0.004474350972601034,
+        "decrease_percent": 4.225263969205761
+      },
+      "duration_s": {
+        "before": 42.94622222222874,
+        "after": 43.3804444444515,
+        "decrease_percent": -1.0110836291393532
+      },
+      "cross_track_rmse_m": {
+        "before": 0.011094891224820911,
+        "after": 0.011360648516158907,
+        "decrease_percent": -2.3953122743867628
+      }
+    }
+  },
+  "lateral_sway_comparison": {
+    "before_sha256": "17913bcdf9e5ea2ca35ec5084f423ed1b8ea6c6d4abb48154d368a63419ad206",
+    "after_sha256": "20fef01ba116c39af4e28c96df092ee3c50f976855fcfc86bc0d4329d51ccac3",
+    "before_passed": 9,
+    "after_passed": 9,
+    "measurement": "Equal mean of nine complete cases. Body and lateral/yaw >=3s; body cycle RMS>=0.7Hz, body HF>=8Hz, lateral/yaw HF>=0.7Hz; joint and other acceptance metrics use unchanged evaluate.py definitions.",
+    "metrics": {
+      "roll_cycle_rad": {
+        "before": 0.0022311223563466027,
+        "after": 0.0017323718766910148,
+        "decrease_percent": 22.354241498089642
+      },
+      "pitch_cycle_rad": {
+        "before": 0.0029392342255509553,
+        "after": 0.0028992015188464464,
+        "decrease_percent": 1.3620114503465564
+      },
+      "height_cycle_m": {
+        "before": 0.0009771349115264049,
+        "after": 0.0009327501728470302,
+        "decrease_percent": 4.542334753963528
+      },
+      "roll_std_rad": {
+        "before": 0.003641078457448837,
+        "after": 0.003432130253555372,
+        "decrease_percent": 5.738635031772066
+      },
+      "pitch_std_rad": {
+        "before": 0.002960204538480008,
+        "after": 0.002924030541682593,
+        "decrease_percent": 1.2220100444812365
+      },
+      "height_std_m": {
+        "before": 0.0009771441120020315,
+        "after": 0.0009330044143457186,
+        "decrease_percent": 4.517214719318807
+      },
+      "roll_rate_rms_rad_s": {
+        "before": 0.06957108491157797,
+        "after": 0.060180877738035994,
+        "decrease_percent": 13.497284375364494
+      },
+      "pitch_rate_rms_rad_s": {
+        "before": 0.07485409737023518,
+        "after": 0.07437330179774965,
+        "decrease_percent": 0.6423102934599245
+      },
+      "vertical_speed_rms_m_s": {
+        "before": 0.020528654120815795,
+        "after": 0.019505524843716787,
+        "decrease_percent": 4.98390820497856
+      },
+      "roll_HF8_rad": {
+        "before": 0.000525874538768287,
+        "after": 0.0004935608291015141,
+        "decrease_percent": 6.144756455115452
+      },
+      "pitch_HF8_rad": {
+        "before": 0.00042677154409068033,
+        "after": 0.0004203701867107662,
+        "decrease_percent": 1.499949438651882
+      },
+      "height_HF8_m": {
+        "before": 0.00012099259505228842,
+        "after": 0.00011635691220567571,
+        "decrease_percent": 3.8313773207437563
+      },
+      "yaw_gait_rms_rad": {
+        "before": 0.021041834522801398,
+        "after": 0.019743459548604944,
+        "decrease_percent": 6.170445703246575
+      },
+      "lateral_gait_rms_m": {
+        "before": 0.000841669380378264,
+        "after": 0.0008209294498340145,
+        "decrease_percent": 2.464142218756793
+      },
+      "joint_high_frequency_rms_rad": {
+        "before": 0.003511645972968495,
+        "after": 0.0034325576499557417,
+        "decrease_percent": 2.252172446241718
+      },
+      "joint_acceleration_rms_rad_s2": {
+        "before": 60.79129695402119,
+        "after": 60.9804673693544,
+        "decrease_percent": -0.3111800945393206
+      },
+      "torque_rate_rms_Nm_s": {
+        "before": 39.09303692346281,
+        "after": 39.2081227493866,
+        "decrease_percent": -0.29438957671439336
+      },
+      "height_peak_to_peak_m": {
+        "before": 0.004671744510120503,
+        "after": 0.004474350972601034,
+        "decrease_percent": 4.225263969205761
+      },
+      "duration_s": {
+        "before": 42.94622222222874,
+        "after": 43.3804444444515,
+        "decrease_percent": -1.0110836291393532
+      },
+      "cross_track_rmse_m": {
+        "before": 0.011094891224820911,
+        "after": 0.011360648516158907,
+        "decrease_percent": -2.3953122743867628
+      }
+    }
+  },
+  "comparison": "results/mini_lite_urdf/lateral_sway_20261023_v4/comparison.json"
+}

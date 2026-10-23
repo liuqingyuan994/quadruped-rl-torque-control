@@ -1,0 +1,24 @@
+{
+  "target": "E:\\obsidian\\lqy的知识库\\机器狗学习\\相关项目\\Mujoco仿真\\概述.md",
+  "before_normalized_sha256": "1f012479edb07d474cafb56de8a7141fe0d0ed8535577e800dc297ac11bb6f24",
+  "updated_sha256": "975d3671e35b09a6bc26a0b5c4cc2ed12a4b9191af499b9e87f1c6fc232c9b25",
+  "updated_normalized_sha256": "975d3671e35b09a6bc26a0b5c4cc2ed12a4b9191af499b9e87f1c6fc232c9b25",
+  "sources": {
+    "D:\\Download\\桌面\\rl\\purequad\\env.py": "b224b61d129e56fae2a38205476e442531df11a56972ec96d7a005d8c63e3186",
+    "D:\\Download\\桌面\\rl\\purequad\\config.py": "cb7360b84d797e8a0ce51ae8145f92c1daf57f8da37a0aee827909c1248870b3",
+    "D:\\Download\\桌面\\rl\\purequad\\train.py": "9d6a8c2637315125877d12cc3efeb5b99bf13eec40eab0e4fdb68a9a488ffb42",
+    "D:\\Download\\桌面\\rl\\purequad\\smooth_train.py": "5a36d62c56545887923339df1c2878c9c1355cb5b52f658894a2e9ad8d5ac52e",
+    "D:\\Download\\桌面\\rl\\new_train.py": "12d30b12b3b218eeecb6f87bc1f56a19e1ed43f0ba4754ea037b314c1ecceece"
+  },
+  "policy_sha256": "20fef01ba116c39af4e28c96df092ee3c50f976855fcfc86bc0d4329d51ccac3",
+  "checks": {
+    "five_complete_formula_combinations": true,
+    "formula_braces_and_environments_balanced": true,
+    "remaining_note_and_figures_preserved": true,
+    "project_links_and_embeds_exist": true,
+    "new_tables_consistent": true,
+    "source_and_policy_configuration_checked": true
+  },
+  "before_lines": 724,
+  "after_lines": 800
+}

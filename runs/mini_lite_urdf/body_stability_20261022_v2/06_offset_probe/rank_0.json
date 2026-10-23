@@ -1,0 +1,117 @@
+{
+  "source": "E:\\Codex\\2026-10-19\\x20-2\\outputs\\body_stability_20261022_v2\\baseline_policy.zip",
+  "source_sha256": "bbbae00e9a723a2593f31ff44b68b5f6d79f6c3a257269a5b474b738fa766e52",
+  "method": "constrained_body_vibration_neural_weight_refinement",
+  "parameters": [
+    0.0,
+    -0.03,
+    0.0,
+    0.04,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    -0.06,
+    0.0,
+    0.0,
+    0.35,
+    0.5,
+    0.35,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "metrics": {
+    "score": -1114.7935755561164,
+    "feasible": false,
+    "ratios": {
+      "roll_std_rad": 0.9180442834204982,
+      "pitch_std_rad": 0.9646249942461936,
+      "height_std_m": 0.9076838062194562,
+      "roll_rate_rms_rad_s": 0.8346724961177309,
+      "pitch_rate_rms_rad_s": 0.8781713939440151,
+      "vertical_speed_rms_m_s": 0.8635958486849106,
+      "roll_HF8_rad": 0.8737555657505621,
+      "pitch_HF8_rad": 1.0042276430197536,
+      "height_HF8_m": 0.8268575366809623,
+      "HF10_rad": 1.0595309822369638,
+      "acceleration_rms_rad_s2": 1.067117857468023,
+      "torque_rate_rms_Nm_s": 1.0522189962994608,
+      "yaw_gait_rms_rad": 0.9867037846327629,
+      "lateral_gait_rms_m": 0.9586133615890163,
+      "cross_track_rmse_m": 1.049771508133456
+    },
+    "violations": [
+      [
+        0,
+        "clearance",
+        1.0
+      ]
+    ],
+    "cases": [
+      {
+        "path": "straight",
+        "options": {
+          "path": "straight",
+          "y_offset": -0.05,
+          "seconds": 12
+        },
+        "reason": "timeout",
+        "duration_s": 12.000000000000677,
+        "progress_m": 1.3109101217442174,
+        "steps": 6000,
+        "raw_return": 266.5227787445506,
+        "cross_track_rmse_m": 0.023582342218549206,
+        "cross_track_max_m": 0.05007036523738341,
+        "min_height_m": 0.30764856336131335,
+        "max_tilt_rad": 0.025952614977778135,
+        "max_joint_speed_rad_s": 10.070529625130366,
+        "nonfoot_contact_fraction": 0.0,
+        "height_peak_to_peak_m": 0.0050192054122029095,
+        "feet_max_height_m": [
+          0.034783839988444115,
+          0.03228368401520115,
+          0.034181043409676495,
+          0.028627711508993514
+        ],
+        "air_fraction": [
+          0.18123977458643883,
+          0.17142337756771497,
+          0.13088529358298492,
+          0.10470823486638793
+        ],
+        "roll_std_rad": 0.004295733463798175,
+        "pitch_std_rad": 0.0037282152029078225,
+        "height_std_m": 0.0011117318693616234,
+        "yaw_gait_rms_rad": 0.019959107838293272,
+        "lateral_gait_rms_m": 0.0008209434700061118,
+        "roll_rate_rms_rad_s": 0.0725014006673895,
+        "pitch_rate_rms_rad_s": 0.10157403921772384,
+        "vertical_speed_rms_m_s": 0.023767058729068896,
+        "roll_HF8_rad": 0.0005560283336427538,
+        "pitch_HF8_rad": 0.000566603546924474,
+        "height_HF8_m": 0.00014459521103109477,
+        "HF10_rad": 0.003567153390761095,
+        "acceleration_rms_rad_s2": 63.64906703768322,
+        "torque_rate_rms_Nm_s": 39.30954371932298
+      }
+    ],
+    "steps": 6000
+  },
+  "candidate_index": 8
+}

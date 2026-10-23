@@ -1,0 +1,14 @@
+[
+  {
+    "path": "straight",
+    "seconds": 60
+  },
+  {
+    "path": "sine",
+    "seconds": 60
+  },
+  {
+    "path": "turn",
+    "seconds": 60
+  }
+]

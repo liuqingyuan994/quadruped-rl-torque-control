@@ -1,0 +1,255 @@
+{
+  "source_directory": "E:\\机器狗文件\\model",
+  "manual": {
+    "path": "E:\\机器狗文件\\Mini Lite 运动SDK开发手册.pdf",
+    "sha256": "f1b1f098744adbb07f1fd9f56497a06893d3c088ad8ed93a2981ff80490d290b",
+    "used_pdf_pages": [
+      4,
+      5,
+      6,
+      12
+    ]
+  },
+  "files": [
+    {
+      "path": "docs/duplicate_proto_sources.csv",
+      "sha256": "848573c99d59fa1cc4cbce60815d4a3e8a1b6d08dc7e4ad8fc6467d54bbd74f8",
+      "bytes": 989
+    },
+    {
+      "path": "docs/joint_interfaces.csv",
+      "sha256": "209b99bda8fa3fe3f71a77040874082f4fbe9565f0e340d8cbd28b29f74d7413",
+      "bytes": 903
+    },
+    {
+      "path": "docs/package_checksums.json",
+      "sha256": "67353ee8b76c644017f3b0b3cf808e9a0affb5ef25db0fb2cf4bbf3639e3a6a1",
+      "bytes": 4984
+    },
+    {
+      "path": "docs/source_manifest.csv",
+      "sha256": "a2651adcbcf6da49ee43999d9b8be1b68942c8f8baa5d92e6fa214c5512373f9",
+      "bytes": 12491
+    },
+    {
+      "path": "docs/terrain_dimensions.csv",
+      "sha256": "70ce83092d4dcd9d60dc16ebaddfcd2431b858c442859785bd4d49e6681ddbc7",
+      "bytes": 3280
+    },
+    {
+      "path": "docs/validation.json",
+      "sha256": "58ef92bc11a51e9278ed9ffce46a88ed9ba10015a5d49b3101d1d4e5ef7e951a",
+      "bytes": 5834
+    },
+    {
+      "path": "mini_lite/meshes/BASE.dae",
+      "sha256": "73ea34fd903e22631d4b699988def3e995c460140013e102c4e472fb0cfdf1d0",
+      "bytes": 4467547
+    },
+    {
+      "path": "mini_lite/meshes/FL_HIP.dae",
+      "sha256": "62d7741198044e04613a4e88b0e03937fdc2d8d48d4100c45c332e73766f00b4",
+      "bytes": 1321598
+    },
+    {
+      "path": "mini_lite/meshes/FR_HIP.dae",
+      "sha256": "7b997b183b530f024be18f31c6a2e74696ce041f9e5d59068f1dffbefa19774a",
+      "bytes": 1318297
+    },
+    {
+      "path": "mini_lite/meshes/HL_HIP.dae",
+      "sha256": "b47225f1d297c7966e1920f65450a421e1b9a1981c22cbf83deb881d02a6c651",
+      "bytes": 1327963
+    },
+    {
+      "path": "mini_lite/meshes/HR_HIP.dae",
+      "sha256": "7ebac7ba00445226943ab503961ef9eddea37a27089a00dad53fcaded0023b9d",
+      "bytes": 1328810
+    },
+    {
+      "path": "mini_lite/meshes/L_THIGH.dae",
+      "sha256": "abf21a2e38118128e9613274887df194dbb41d9d2373346974d73295fb6a7d69",
+      "bytes": 2029759
+    },
+    {
+      "path": "mini_lite/meshes/R_THIGH.dae",
+      "sha256": "c6790004ae79c354f29b001889e51944521ff9b753a38cb108698e92515b2424",
+      "bytes": 2020107
+    },
+    {
+      "path": "mini_lite/meshes/SHANK.dae",
+      "sha256": "d676de9feea92735ee734c63cd3d93c5d6b3f16ccfc8f58a6b3838435b89b6cd",
+      "bytes": 630853
+    },
+    {
+      "path": "mini_lite/urdf/MiniLiteC.urdf",
+      "sha256": "e96bf509b274f801faf3b8a1478e8bbe83f4f3baa4b340ca76c9c936e36e000a",
+      "bytes": 11422
+    },
+    {
+      "path": "mini_lite/webots/protos/JueyingMiniLite.proto",
+      "sha256": "9bd8d25c2280147c6d6f910bf0db4a0c25ef31143b4ab9253e2b9aca5bfc9e6e",
+      "bytes": 6335026
+    },
+    {
+      "path": "mini_lite/webots/reference_worlds/Figure.wbt",
+      "sha256": "778e9913054c8fe189ddd1c789d2c4399c76945b3699b5226d585f73a523fc0c",
+      "bytes": 15801545
+    },
+    {
+      "path": "mini_lite/webots/reference_worlds/mark_1.5_Supervisor - origin_BK.wbt",
+      "sha256": "c8bc6a6054b96b2691f77295e0f512b45e5553284b2c5f48463c0b613aa797ce",
+      "bytes": 24333
+    },
+    {
+      "path": "mini_lite/webots/reference_worlds/mark_1.5_Supervisor.wbt",
+      "sha256": "8b072ab0064d57c21fb36695698a2c6a6bd6cabba4ddf9e3eef4bb9e7550ddde",
+      "bytes": 24394
+    },
+    {
+      "path": "mini_lite/webots/reference_worlds/mark_1.5_Supervisor修改.wbt",
+      "sha256": "e46b36bf8554fc0a4ec514f516c7049c7c8117fb52f75dded88ca379ee89c3c8",
+      "bytes": 27061
+    },
+    {
+      "path": "mini_lite/webots/reference_worlds/mark_1_basic_ops.wbt",
+      "sha256": "4586a91fec322aa12fc76d5032f343fe5c4fb2d17fe4a0dd0d93647a904042b3",
+      "bytes": 24385
+    },
+    {
+      "path": "mini_lite/webots/worlds/mark_0_init_model.wbt",
+      "sha256": "e2eebabcf12eafa8cf8b767fa824a6bf615de38a892f75a3caf16038ce66e97a",
+      "bytes": 23920
+    },
+    {
+      "path": "provenance/MiniLiteC.urdf.original",
+      "sha256": "747443a71644728590041a65173cf4e8a29d7c1d959c64ae930715a377d52f3e",
+      "bytes": 11408
+    },
+    {
+      "path": "README.md",
+      "sha256": "170aec64f35f00be2899a7375e7d32553bde8f9cb659cc38ba3046fe423c64aa",
+      "bytes": 8738
+    },
+    {
+      "path": "terrain/cad/0.2_0.6_0.4__.SLDPRT",
+      "sha256": "2cb6f4daeec4e3192fae974e1457bb75fb8082e47c0be695db1decbba1286f4d",
+      "bytes": 85692
+    },
+    {
+      "path": "terrain/cad/CN_complex_slop.SLDPRT",
+      "sha256": "5d5cb6ce1f23c1dc2e55e9fce2b69e234826882579ab4c0960333cf767a8996b",
+      "bytes": 74458
+    },
+    {
+      "path": "terrain/cad/CN_slop_0.2.SLDPRT",
+      "sha256": "4bf90f76170bbcae11fe0f5972f095da779c20b08bd37c4a381352b650278b14",
+      "bytes": 72678
+    },
+    {
+      "path": "terrain/cad/complex_slop_A.SLDPRT",
+      "sha256": "0b308318b7c1a1c9d029aaf5ba9ed6a731dd287dc1b61e46a437fe70ae8fb9fa",
+      "bytes": 85408
+    },
+    {
+      "path": "terrain/cad/complex_slop_B.SLDPRT",
+      "sha256": "37f170fc85b7efbd5cd1fca378a6dfda74f0b41774293abaceaa7820afd44461",
+      "bytes": 82319
+    },
+    {
+      "path": "terrain/cad/dual_slop.SLDPRT",
+      "sha256": "9ba90f691d935cf4a158ea1968908361c65670f09b5666d44f87f0a913254fce",
+      "bytes": 61683
+    },
+    {
+      "path": "terrain/cad/斜面.SLDPRT",
+      "sha256": "a6e0d2e392ff1d572f017f5041b33ac32a404e4df4062af689eb7834bebd3417",
+      "bytes": 75357
+    },
+    {
+      "path": "terrain/meshes/0.05rad.STL",
+      "sha256": "164dd1d655cf859947ab4fc4181ee4ff31e6ce671bc3e3307d2e918fcd37cf15",
+      "bytes": 1484
+    },
+    {
+      "path": "terrain/meshes/0.1rad.STL",
+      "sha256": "e99627cb2581a24810bfb99c655a9499bcff89ae49abb0ff9ef14fc52546a228",
+      "bytes": 1484
+    },
+    {
+      "path": "terrain/meshes/0.2-0.6-0.4.STL",
+      "sha256": "50e37fe13d7a9acd65487ed45c8f73c6be2dd783fc3612dbbdb9ae6059dae0f9",
+      "bytes": 1484
+    },
+    {
+      "path": "terrain/meshes/0.2_0.6_0.4_top.STL",
+      "sha256": "0dc186466375abba45bb63e7f161eb9b4ce0ca877b395c2b93ce34cce1dd7d1a",
+      "bytes": 2284
+    },
+    {
+      "path": "terrain/meshes/0.2rad-BIG.STL",
+      "sha256": "b9e35dc78ae45150cf2d07f9da22371c37be2c53241a18243ea53aa5b05433d0",
+      "bytes": 1484
+    },
+    {
+      "path": "terrain/meshes/0.2rad.STL",
+      "sha256": "b9e35dc78ae45150cf2d07f9da22371c37be2c53241a18243ea53aa5b05433d0",
+      "bytes": 1484
+    },
+    {
+      "path": "terrain/meshes/0.4rad-BIG.STL",
+      "sha256": "a4a64609339d4423197b97375b5102acb25550f050f229681acea0beb3fc1006",
+      "bytes": 1484
+    },
+    {
+      "path": "terrain/meshes/0.4rad.STL",
+      "sha256": "a4a64609339d4423197b97375b5102acb25550f050f229681acea0beb3fc1006",
+      "bytes": 1484
+    },
+    {
+      "path": "terrain/meshes/0.6rad.STL",
+      "sha256": "b846c394b738a9bb5ff4f6e9eb84787ab320d371558d6142d7f51a206bf27bec",
+      "bytes": 684
+    },
+    {
+      "path": "terrain/meshes/CN_complex_slop.STL",
+      "sha256": "5cd97b3c8ec54dc5fb7b806a7d6d7ee034362b5f1e3a77e36da28db8e3909930",
+      "bytes": 1484
+    },
+    {
+      "path": "terrain/meshes/CN_slop.STL",
+      "sha256": "a8f6d46895da6803dcc08e9e22408e0218933d9b1f8f169666771761e58af027",
+      "bytes": 1084
+    },
+    {
+      "path": "terrain/meshes/CN_slop_0.2.STL",
+      "sha256": "92b4287e3244780f622a5c8e0c0bec4294f1766ae4a071519669b6abbf4b7619",
+      "bytes": 1084
+    },
+    {
+      "path": "terrain/meshes/complex_slop_A.STL",
+      "sha256": "93934bccd9b1ab613f6c8c9a18ecf5bab646de1550e42a13105ac96ef6c9b7e3",
+      "bytes": 2284
+    },
+    {
+      "path": "terrain/meshes/complex_slop_B.STL",
+      "sha256": "1b877a1b80f47e5388b6c5001d4c9610c1f9539f39661055298b2d5af9e258b9",
+      "bytes": 1484
+    },
+    {
+      "path": "terrain/meshes/complexslop.stl",
+      "sha256": "54df4ce64d258b3da3b625a55552625f8810b1a98f941ac11d7c48de24e3c0ac",
+      "bytes": 984
+    },
+    {
+      "path": "terrain/meshes/dual_slop.STL",
+      "sha256": "b5b28c7f7f3e31ae83b7b3602387573c9dd6bdb3e6c3fe6874a8d41f3b70a8ee",
+      "bytes": 884
+    },
+    {
+      "path": "terrain/meshes/rough_terrainV4.stl",
+      "sha256": "4cf95adc3636ee29625e69df53f45a9d9b8d0c2d21b0a5698c50f28fef686b60",
+      "bytes": 18084
+    }
+  ]
+}

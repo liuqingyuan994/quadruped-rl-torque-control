@@ -1,0 +1,8 @@
+{
+  "SB3_load": "PASS",
+  "actor_changed_weights": 12,
+  "only_RR_hip_knee_clock_columns_changed": true,
+  "action_comparisons": 250,
+  "maximum_action_difference": 2.1606683731079102e-07,
+  "physics_or_criteria_changed": false
+}

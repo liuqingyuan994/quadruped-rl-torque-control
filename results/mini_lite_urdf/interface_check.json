@@ -1,0 +1,38 @@
+{
+  "status": "PASS",
+  "model_id": "mini_lite_urdf_20261019_v1",
+  "checks_passed": 14,
+  "checks": [
+    "dimensions_and_mass",
+    "URDF_effort_limits",
+    "SDK_2ms_period",
+    "runtime_URDF_single_field_correction",
+    "all_17_source_mass_COM_and_full_inertia_tensors",
+    "all_12_joint_axes_ranges_and_source_damping",
+    "48_independent_URDF_foot_forward_kinematics",
+    "100_step_visual_headless_identical_dynamics",
+    "direct_neural_torque_only",
+    "finite_67D_observations",
+    "action_saturation_5.28_5.28_11.2_Nm",
+    "invalid_action_rejection",
+    "old_policy_model_id_rejection",
+    "unvalidated_old_reference_motion_rejected"
+  ],
+  "mass_kg": 10.009390004,
+  "torso_mass_kg": 5.6352,
+  "observations": 67,
+  "actions": 12,
+  "control_period_s": 0.002,
+  "joint_effort_Nm": [
+    13.2,
+    13.2,
+    28
+  ],
+  "actual_action_limits_Nm": [
+    5.28,
+    5.28,
+    11.2
+  ],
+  "path_success": "REQUIRES_INDEPENDENT_POLICY_ACCEPTANCE",
+  "mjcf_sha256": "81924c3eb55fae38c3a185c23393ef3ce9fb0a13dd5c33ec0f44e2b0973aa3b5"
+}

@@ -1,0 +1,254 @@
+{
+  "source": "E:\\Codex\\2026-10-19\\x20-2\\outputs\\overview_training_analysis_20261023\\ppo_evaluation_policy.zip",
+  "source_sha256": "b9f08ee9607256c5563a14641da66f9a5083b4cf5d336004c085aa094954e046",
+  "method": "RR hip/knee clock-feature local weight search",
+  "acceptance_criteria": {
+    "complete": true,
+    "duration_s_max": 60,
+    "rmse_m_max": 0.05,
+    "cross_max_m": 0.15,
+    "tilt_rad_max": 0.08,
+    "min_height_m": 0.28,
+    "height_peak_to_peak_m_max": 0.008,
+    "nonfoot_contact_fraction": 0,
+    "all_feet_peak_height_m_min": 0.029,
+    "joint_speed_max_rad_s": 20.0,
+    "robot_model": "mini_lite_urdf_20261019_v1",
+    "all_feet_air_fraction_range": [
+      0.08,
+      0.55
+    ]
+  },
+  "physics_dt": 0.002,
+  "action_scale": 0.4,
+  "parameters": [
+    {
+      "hip_gain": 1.0,
+      "knee_gain": 1.0,
+      "hip_phase": 0.0,
+      "knee_phase": 0.0
+    },
+    {
+      "hip_gain": 0.98,
+      "knee_gain": 1.0,
+      "hip_phase": 0.0,
+      "knee_phase": 0.0
+    },
+    {
+      "hip_gain": 0.99,
+      "knee_gain": 1.0,
+      "hip_phase": 0.0,
+      "knee_phase": 0.0
+    },
+    {
+      "hip_gain": 0.995,
+      "knee_gain": 1.0,
+      "hip_phase": 0.0,
+      "knee_phase": 0.0
+    },
+    {
+      "hip_gain": 1.005,
+      "knee_gain": 1.0,
+      "hip_phase": 0.0,
+      "knee_phase": 0.0
+    },
+    {
+      "hip_gain": 1.01,
+      "knee_gain": 1.0,
+      "hip_phase": 0.0,
+      "knee_phase": 0.0
+    },
+    {
+      "hip_gain": 1.02,
+      "knee_gain": 1.0,
+      "hip_phase": 0.0,
+      "knee_phase": 0.0
+    },
+    {
+      "hip_gain": 1.0,
+      "knee_gain": 0.98,
+      "hip_phase": 0.0,
+      "knee_phase": 0.0
+    },
+    {
+      "hip_gain": 1.0,
+      "knee_gain": 0.99,
+      "hip_phase": 0.0,
+      "knee_phase": 0.0
+    },
+    {
+      "hip_gain": 1.0,
+      "knee_gain": 0.995,
+      "hip_phase": 0.0,
+      "knee_phase": 0.0
+    },
+    {
+      "hip_gain": 1.0,
+      "knee_gain": 1.005,
+      "hip_phase": 0.0,
+      "knee_phase": 0.0
+    },
+    {
+      "hip_gain": 1.0,
+      "knee_gain": 1.01,
+      "hip_phase": 0.0,
+      "knee_phase": 0.0
+    },
+    {
+      "hip_gain": 1.0,
+      "knee_gain": 1.02,
+      "hip_phase": 0.0,
+      "knee_phase": 0.0
+    },
+    {
+      "hip_gain": 0.99,
+      "knee_gain": 0.99,
+      "hip_phase": 0.0,
+      "knee_phase": 0.0
+    },
+    {
+      "hip_gain": 0.995,
+      "knee_gain": 0.995,
+      "hip_phase": 0.0,
+      "knee_phase": 0.0
+    },
+    {
+      "hip_gain": 1.005,
+      "knee_gain": 1.005,
+      "hip_phase": 0.0,
+      "knee_phase": 0.0
+    },
+    {
+      "hip_gain": 1.01,
+      "knee_gain": 1.01,
+      "hip_phase": 0.0,
+      "knee_phase": 0.0
+    },
+    {
+      "hip_gain": 1.02,
+      "knee_gain": 1.02,
+      "hip_phase": 0.0,
+      "knee_phase": 0.0
+    },
+    {
+      "hip_gain": 1.0,
+      "knee_gain": 1.0,
+      "hip_phase": -0.01,
+      "knee_phase": 0.0
+    },
+    {
+      "hip_gain": 1.0,
+      "knee_gain": 1.0,
+      "hip_phase": -0.005,
+      "knee_phase": 0.0
+    },
+    {
+      "hip_gain": 1.0,
+      "knee_gain": 1.0,
+      "hip_phase": 0.005,
+      "knee_phase": 0.0
+    },
+    {
+      "hip_gain": 1.0,
+      "knee_gain": 1.0,
+      "hip_phase": 0.01,
+      "knee_phase": 0.0
+    },
+    {
+      "hip_gain": 1.0,
+      "knee_gain": 1.0,
+      "hip_phase": 0.0,
+      "knee_phase": -0.01
+    },
+    {
+      "hip_gain": 1.0,
+      "knee_gain": 1.0,
+      "hip_phase": 0.0,
+      "knee_phase": -0.005
+    },
+    {
+      "hip_gain": 1.0,
+      "knee_gain": 1.0,
+      "hip_phase": 0.0,
+      "knee_phase": 0.005
+    },
+    {
+      "hip_gain": 1.0,
+      "knee_gain": 1.0,
+      "hip_phase": 0.0,
+      "knee_phase": 0.01
+    },
+    {
+      "hip_gain": 1.01,
+      "knee_gain": 1.0075,
+      "hip_phase": 0.0,
+      "knee_phase": 0.0
+    },
+    {
+      "hip_gain": 1.01,
+      "knee_gain": 1.0125,
+      "hip_phase": 0.0,
+      "knee_phase": 0.0
+    },
+    {
+      "hip_gain": 1.01,
+      "knee_gain": 1.015,
+      "hip_phase": 0.0,
+      "knee_phase": 0.0
+    },
+    {
+      "hip_gain": 1.0125,
+      "knee_gain": 1.0075,
+      "hip_phase": 0.0,
+      "knee_phase": 0.0
+    },
+    {
+      "hip_gain": 1.0125,
+      "knee_gain": 1.01,
+      "hip_phase": 0.0,
+      "knee_phase": 0.0
+    },
+    {
+      "hip_gain": 1.0125,
+      "knee_gain": 1.0125,
+      "hip_phase": 0.0,
+      "knee_phase": 0.0
+    },
+    {
+      "hip_gain": 1.0125,
+      "knee_gain": 1.015,
+      "hip_phase": 0.0,
+      "knee_phase": 0.0
+    },
+    {
+      "hip_gain": 1.015,
+      "knee_gain": 1.0075,
+      "hip_phase": 0.0,
+      "knee_phase": 0.0
+    },
+    {
+      "hip_gain": 1.015,
+      "knee_gain": 1.01,
+      "hip_phase": 0.0,
+      "knee_phase": 0.0
+    },
+    {
+      "hip_gain": 1.015,
+      "knee_gain": 1.0125,
+      "hip_phase": 0.0,
+      "knee_phase": 0.0
+    },
+    {
+      "hip_gain": 1.015,
+      "knee_gain": 1.015,
+      "hip_phase": 0.0,
+      "knee_phase": 0.0
+    }
+  ],
+  "selection_target_foot_height_m": 0.02925,
+  "source_code_sha256": {
+    "purequad/env.py": "b224b61d129e56fae2a38205476e442531df11a56972ec96d7a005d8c63e3186",
+    "purequad/validate.py": "a638300a0486fe199e9cea38cd14b9cd6f80568f4aea4fe79a4f325a4f758033",
+    "purequad/evaluate.py": "d1f3b6fe75b20d0428065965f5010cf13b2a6f3dd0fcb035027c0683d718da76"
+  }
+}

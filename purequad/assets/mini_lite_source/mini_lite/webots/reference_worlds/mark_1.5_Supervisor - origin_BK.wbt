@@ -1,0 +1,794 @@
+#VRML_SIM R2022a utf8
+WorldInfo {
+}
+Viewpoint {
+  orientation 0.10602350888549235 0.08929017227451903 -0.9903465457600155 1.7512515470308712
+  position 0.2704982781280575 1.9202006989831732 0.5516220647749878
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+RectangleArena {
+  rotation 0 1 0 0
+  floorSize 5 5
+  floorTileSize 1 1
+}
+DEF JY Robot {
+  translation 0 0 0.046
+  rotation 0 0 1 1.01503e-06
+  children [
+    Solid {
+      translation 0 0 -0.004
+      children [
+        DEF MIN_BODY Shape {
+          appearance PBRAppearance {
+            baseColor 1 0 0
+            roughness 1
+          }
+          geometry Box {
+            size 0.236 0.184 0.092
+          }
+        }
+        DEF IMU InertialUnit {
+          translation 0.001508 -0.002282 0.002674
+          name "IMU"
+        }
+        Gyro {
+          translation 0.001508 -0.002282 0.002674
+          name "GYRO"
+        }
+      ]
+      name "BASE_INER"
+      physics Physics {
+        density -1
+        mass 5.6352
+        centerOfMass [
+          0.001508 -0.002282 0.002674
+        ]
+        inertiaMatrix [
+          0.0088043 0.01327 0.018186
+          5.9997e-05 0.00011144 1.6337e-05
+        ]
+      }
+    }
+    DEF FL HingeJoint {
+      jointParameters HingeJointParameters {
+        position 0.523
+        anchor 0.175 0.055 0
+      }
+      device [
+        RotationalMotor {
+          name "FL_HipX"
+          maxVelocity 20
+          minPosition -0.523
+          maxPosition 0.523
+          maxTorque 13.2
+        }
+        PositionSensor {
+          name "FL_HipX_sensor"
+        }
+      ]
+      endPoint DEF FL_HipX Solid {
+        translation 0.175 0.055 0
+        rotation 0.9999999999916797 -3.948851937529119e-06 -1.0233292485479452e-06 0.5230000000083123
+        children [
+          HingeJoint {
+            jointParameters HingeJointParameters {
+              position -3.49
+              axis 0 -1 0
+              anchor 0 0.081 0
+            }
+            device [
+              RotationalMotor {
+                name "FL_HipY"
+                maxVelocity 20
+                minPosition -3.49
+                maxPosition 0.349
+                maxTorque 13.2
+              }
+              PositionSensor {
+                name "FL_HipY_sensor"
+              }
+            ]
+            endPoint DEF FL_HipY Solid {
+              translation 0 0.081 0
+              rotation 0 0.9999999999999999 0 3.49
+              children [
+                HingeJoint {
+                  jointParameters HingeJointParameters {
+                    position 2.44
+                    axis 0 -1 0
+                    anchor 0 0 -0.18
+                  }
+                  device [
+                    RotationalMotor {
+                      name "FL_Knee"
+                      maxVelocity 20
+                      minPosition 0.3
+                      maxPosition 2.44
+                      maxTorque 28
+                    }
+                    PositionSensor {
+                      name "FL_Knee_sensor"
+                    }
+                  ]
+                  endPoint DEF FL_Knee Solid {
+                    translation 0 0 -0.18
+                    rotation 0 -1 0 2.44
+                    children [
+                      Transform {
+                        rotation 1 0 0 -1.5707953071795862
+                        children [
+                          DEF ROTION_AXIS Shape {
+                            appearance PBRAppearance {
+                              baseColor 0 0 1
+                              roughness 1
+                            }
+                            geometry Cylinder {
+                              height 0.05
+                              radius 0.02
+                            }
+                          }
+                        ]
+                      }
+                      Transform {
+                        translation 0 0 -0.09
+                        children [
+                          DEF LEG_MID Shape {
+                            appearance PBRAppearance {
+                              roughness 1
+                            }
+                            geometry Box {
+                              size 0.03 0.03 0.18
+                            }
+                          }
+                        ]
+                      }
+                      DEF FL_FOOT TouchSensor {
+                        translation 0 0 -0.18
+                        children [
+                          DEF MIN_FOOT Shape {
+                            appearance PBRAppearance {
+                              baseColor 0 1 0
+                              roughness 1
+                            }
+                            geometry Sphere {
+                              radius 0.02
+                            }
+                          }
+                        ]
+                        name "FL_FOOT"
+                        boundingObject DEF MIN_FOOT_BO Sphere {
+                          radius 0.02
+                        }
+                        physics DEF MIN_FOOT_PS Physics {
+                          density -1
+                          mass 0.01
+                          centerOfMass [
+                            0 0 0
+                          ]
+                          inertiaMatrix [
+                            1e-12 1e-12 1e-12
+                            0 0 0
+                          ]
+                        }
+                        type "force-3d"
+                      }
+                    ]
+                    name "FL_SHANK"
+                    physics Physics {
+                      density -1
+                      mass 0.08
+                      centerOfMass [
+                        -6e-05 -1e-06 -0.1281
+                      ]
+                      inertiaMatrix [
+                        0.00022857 0.00023367 1.1919e-05
+                        2.2816e-09 2.1021e-06 6.8779e-08
+                      ]
+                    }
+                  }
+                }
+                Transform {
+                  translation 0 -0.05 0
+                  rotation 1 0 0 -1.5707953071795862
+                  children [
+                    DEF ROTION_AXIS Shape {
+                      appearance PBRAppearance {
+                        baseColor 0 0 1
+                        roughness 1
+                      }
+                      geometry Cylinder {
+                        height 0.05
+                        radius 0.02
+                      }
+                    }
+                  ]
+                }
+                Transform {
+                  translation 0 0 -0.068
+                  children [
+                    DEF DOF_MID Shape {
+                      appearance PBRAppearance {
+                        baseColor 1 0 0
+                        roughness 1
+                      }
+                      geometry Box {
+                        size 0.07 0.04 0.216
+                      }
+                    }
+                  ]
+                }
+              ]
+              name "FL_THIGH"
+              boundingObject Transform {
+                translation 0 0 -0.068
+                children [
+                  Box {
+                    size 0.07 0.04 0.216
+                  }
+                ]
+              }
+              physics Physics {
+                density -1
+                mass 0.55479
+                centerOfMass [
+                  -0.001403 -0.025622 -0.015888
+                ]
+                inertiaMatrix [
+                  0.00067595 0.0008367 0.00020884
+                  -4.7781e-07 -4.0151e-05 1.343e-07
+                ]
+              }
+            }
+          }
+        ]
+        name "FL_HIP"
+        physics Physics {
+          density -1
+          mass 0.45879
+          centerOfMass [
+            0.047924 -0.008277 -0.000473
+          ]
+          inertiaMatrix [
+            0.00014995 0.00026266 0.00014535
+            2.389e-07 -3.6701e-06 5.1131e-07
+          ]
+        }
+      }
+    }
+    DEF FR HingeJoint {
+      jointParameters HingeJointParameters {
+        position 0.523
+        axis -1 0 0
+        anchor 0.175 -0.055 0
+      }
+      device [
+        RotationalMotor {
+          name "FR_HipX"
+          maxVelocity 20
+          minPosition -0.523
+          maxPosition 0.523
+          maxTorque 13.2
+        }
+        PositionSensor {
+          name "FR_HipX_sensor"
+        }
+      ]
+      endPoint DEF FR_HipX Solid {
+        translation 0.175 -0.055 0
+        rotation -1 0 0 0.523
+        children [
+          DEF HR_HipY HingeJoint {
+            jointParameters HingeJointParameters {
+              position -3.49
+              axis 0 -1 0
+              anchor 0 -0.081 0
+            }
+            device [
+              RotationalMotor {
+                name "FR_HipY"
+                maxVelocity 20
+                minPosition -3.49
+                maxPosition 0.349
+                maxTorque 13.2
+              }
+              PositionSensor {
+                name "FR_HipY_sensor"
+              }
+            ]
+            endPoint Solid {
+              translation 0 -0.081 0
+              rotation 0 0.9999999999999999 0 3.49
+              children [
+                HingeJoint {
+                  jointParameters HingeJointParameters {
+                    position 2.44
+                    axis 0 -1 0
+                    anchor 0 0 -0.18
+                  }
+                  device [
+                    RotationalMotor {
+                      name "FR_Knee"
+                      maxVelocity 20
+                      minPosition 0.3
+                      maxPosition 2.44
+                      maxTorque 28
+                    }
+                    PositionSensor {
+                      name "FR_Knee_sensor"
+                    }
+                  ]
+                  endPoint Solid {
+                    translation -8.600579667125523e-17 -2.775557561562976e-17 -0.18
+                    rotation 0 -1 0 2.44
+                    children [
+                      Transform {
+                        translation 0 0 -0.09
+                        children [
+                          USE LEG_MID
+                        ]
+                      }
+                      DEF FR_FOOT TouchSensor {
+                        translation 0 0 -0.18
+                        children [
+                          USE MIN_FOOT
+                        ]
+                        name "FR_FOOT"
+                        boundingObject USE MIN_FOOT_BO
+                        physics USE MIN_FOOT_PS
+                        type "force-3d"
+                      }
+                      Transform {
+                        rotation 1 0 0 -1.5707953071795862
+                        children [
+                          DEF ROTION_AXIS Shape {
+                            appearance PBRAppearance {
+                              baseColor 0 0 1
+                              roughness 1
+                            }
+                            geometry Cylinder {
+                              height 0.05
+                              radius 0.02
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                    name "FR_SHANK"
+                    physics Physics {
+                      density -1
+                      mass 0.08
+                      centerOfMass [
+                        -6e-05 -1e-06 -0.1281
+                      ]
+                      inertiaMatrix [
+                        0.00022857 0.00023367 1.1919e-05
+                        2.2816e-09 2.1021e-06 6.8779e-08
+                      ]
+                    }
+                  }
+                }
+                Transform {
+                  translation 0 0 -0.068
+                  children [
+                    USE DOF_MID
+                  ]
+                }
+                Transform {
+                  translation 0 0.05 0
+                  rotation 1 0 0 -1.5707953071795862
+                  children [
+                    DEF ROTION_AXIS Shape {
+                      appearance PBRAppearance {
+                        baseColor 0 0 1
+                        roughness 1
+                      }
+                      geometry Cylinder {
+                        height 0.05
+                        radius 0.02
+                      }
+                    }
+                  ]
+                }
+              ]
+              name "FR_THIGH"
+              boundingObject Transform {
+                translation 0 0 -0.068
+                children [
+                  Box {
+                    size 0.07 0.04 0.216
+                  }
+                ]
+              }
+              physics Physics {
+                density -1
+                mass 0.55481
+                centerOfMass [
+                  -0.001396 0.025621 -0.015879
+                ]
+                inertiaMatrix [
+                  0.00067596 0.00083679 0.00020893
+                  4.4371e-07 -4.0135e-05 -1.6601e-07
+                ]
+              }
+            }
+          }
+        ]
+        name "FR_HIP"
+        physics Physics {
+          density -1
+          mass 0.45879
+          centerOfMass [
+            0.047946 0.0076 -0.000489
+          ]
+          inertiaMatrix [
+            0.00014971 0.00026266 0.00014559
+            -3.5222e-07 -3.7452e-06 -4.2732e-07
+          ]
+        }
+      }
+    }
+    DEF HL HingeJoint {
+      jointParameters HingeJointParameters {
+        position 0.523
+        anchor -0.175 0.055 0
+      }
+      device [
+        RotationalMotor {
+          name "HL_HipX"
+          maxVelocity 20
+          minPosition -0.523
+          maxPosition 0.523
+          maxTorque 13.2
+        }
+        PositionSensor {
+          name "HL_HipX_sensor"
+        }
+      ]
+      endPoint DEF HL_HipX Solid {
+        translation -0.175 0.055 0
+        rotation 1 0 0 0.523
+        children [
+          DEF HL_HipY HingeJoint {
+            jointParameters HingeJointParameters {
+              position -3.49
+              axis 0 -1 0
+              anchor 0 0.081 0
+            }
+            device [
+              RotationalMotor {
+                name "HL_HipY"
+                maxVelocity 20
+                minPosition -3.49
+                maxPosition 0.349
+                maxTorque 13.2
+              }
+              PositionSensor {
+                name "HL_HipY_sensor"
+              }
+            ]
+            endPoint Solid {
+              translation 0 0.081 0
+              rotation 0 0.9999999999999999 0 3.49
+              children [
+                HingeJoint {
+                  jointParameters HingeJointParameters {
+                    position 2.44
+                    axis 0 -1 0
+                    anchor 0.000264 0 -0.18
+                  }
+                  device [
+                    RotationalMotor {
+                      name "HL_Knee"
+                      maxVelocity 20
+                      minPosition 0.3
+                      maxPosition 2.44
+                      maxTorque 28
+                    }
+                    PositionSensor {
+                      name "HL_Knee_sensor"
+                    }
+                  ]
+                  endPoint Solid {
+                    translation 0.00026399999999991404 2.775557561562978e-17 -0.18
+                    rotation 0 -1 0 2.44
+                    children [
+                      Transform {
+                        translation 0 0 -0.09
+                        children [
+                          USE LEG_MID
+                        ]
+                      }
+                      Transform {
+                        rotation 1 0 0 -1.5707953071795862
+                        children [
+                          DEF ROTION_AXIS Shape {
+                            appearance PBRAppearance {
+                              baseColor 0 0 1
+                              roughness 1
+                            }
+                            geometry Cylinder {
+                              height 0.05
+                              radius 0.02
+                            }
+                          }
+                        ]
+                      }
+                      DEF HL_FOOT TouchSensor {
+                        translation 0 0 -0.18
+                        children [
+                          USE MIN_FOOT
+                        ]
+                        name "HL_FOOT"
+                        boundingObject USE MIN_FOOT_BO
+                        physics USE MIN_FOOT_PS
+                        type "force-3d"
+                      }
+                    ]
+                    name "HL_SHANK"
+                    physics Physics {
+                      density -1
+                      mass 0.08
+                      centerOfMass [
+                        -6e-05 -1e-06 -0.1281
+                      ]
+                      inertiaMatrix [
+                        0.00022857 0.00023367 1.1919e-05
+                        2.2815e-09 2.1021e-06 6.878e-08
+                      ]
+                    }
+                  }
+                }
+                Transform {
+                  translation 0 0 -0.068
+                  children [
+                    USE DOF_MID
+                  ]
+                }
+                Transform {
+                  translation 0 -0.05 0
+                  rotation 1 0 0 -1.5707953071795862
+                  children [
+                    DEF ROTION_AXIS Shape {
+                      appearance PBRAppearance {
+                        baseColor 0 0 1
+                        roughness 1
+                      }
+                      geometry Cylinder {
+                        height 0.05
+                        radius 0.02
+                      }
+                    }
+                  ]
+                }
+              ]
+              name "HL_THIGH"
+              boundingObject Transform {
+                translation 0 0 -0.068
+                children [
+                  Box {
+                    size 0.07 0.04 0.216
+                  }
+                ]
+              }
+              physics Physics {
+                density -1
+                mass 0.55473
+                centerOfMass [
+                  -0.001517 -0.024336 -0.016886
+                ]
+                inertiaMatrix [
+                  0.00069602 0.00085356 0.00020592
+                  -1.119e-06 -4.0661e-05 -9.551e-07
+                ]
+              }
+            }
+          }
+        ]
+        name "HL_HIP"
+        physics Physics {
+          density -1
+          mass 0.45879
+          centerOfMass [
+            -0.047923 -0.008277 -0.000473
+          ]
+          inertiaMatrix [
+            0.00014995 0.00026266 0.00014535
+            -2.3272e-07 3.6331e-06 5.1134e-07
+          ]
+        }
+      }
+    }
+    DEF HR HingeJoint {
+      jointParameters HingeJointParameters {
+        position 0.523
+        axis -1 0 0
+        anchor -0.175 -0.055 0
+      }
+      device [
+        RotationalMotor {
+          name "HR_HipX"
+          maxVelocity 20
+          minPosition -0.523
+          maxPosition 0.523
+          maxTorque 13.2
+        }
+        PositionSensor {
+          name "HR_HipX_sensor"
+        }
+      ]
+      endPoint DEF HR_HipX Solid {
+        translation -0.175 -0.055 0
+        rotation -1 0 0 0.523
+        children [
+          DEF HR_HipY HingeJoint {
+            jointParameters HingeJointParameters {
+              position -3.49
+              axis 0 -1 0
+              anchor 0 -0.081 0
+            }
+            device [
+              RotationalMotor {
+                name "HR_HipY"
+                maxVelocity 20
+                minPosition -3.49
+                maxPosition 0.349
+                maxTorque 13.2
+              }
+              PositionSensor {
+                name "HR_HipY_sensor"
+              }
+            ]
+            endPoint Solid {
+              translation 0 -0.081 0
+              rotation 2.4191061632100717e-06 0.9999999999721243 7.063958659171982e-06 3.4899999999952915
+              children [
+                Transform {
+                  translation 0 0 -0.068
+                  children [
+                    USE DOF_MID
+                  ]
+                }
+                HingeJoint {
+                  jointParameters HingeJointParameters {
+                    position 2.44
+                    axis 0 -1 0
+                    anchor 0 0 -0.18
+                  }
+                  device [
+                    RotationalMotor {
+                      name "HR_Knee"
+                      maxVelocity 20
+                      minPosition 0.3
+                      maxPosition 2.44
+                      maxTorque 28
+                    }
+                    PositionSensor {
+                      name "HR_Knee_sensor"
+                    }
+                  ]
+                  endPoint Solid {
+                    translation -8.582908504739747e-17 -5.551115123125955e-17 -0.18
+                    rotation 0 -1 0 2.44
+                    children [
+                      Transform {
+                        rotation 1 0 0 -1.5707953071795862
+                        children [
+                          DEF ROTION_AXIS Shape {
+                            appearance PBRAppearance {
+                              baseColor 0 0 1
+                              roughness 1
+                            }
+                            geometry Cylinder {
+                              height 0.05
+                              radius 0.02
+                            }
+                          }
+                        ]
+                      }
+                      DEF HR_FOOT TouchSensor {
+                        translation 0 0 -0.18
+                        children [
+                          USE MIN_FOOT
+                        ]
+                        name "HR_FOOT"
+                        boundingObject USE MIN_FOOT_BO
+                        physics USE MIN_FOOT_PS
+                        type "force-3d"
+                      }
+                      Transform {
+                        translation 0 0 -0.09
+                        children [
+                          USE LEG_MID
+                        ]
+                      }
+                    ]
+                    name "HR_SHANK"
+                    physics Physics {
+                      density -1
+                      mass 0.08
+                      centerOfMass [
+                        -6e-05 -1e-06 -0.1281
+                      ]
+                      inertiaMatrix [
+                        0.00022857 0.00023367 1.1919e-05
+                        2.2816e-09 2.1021e-06 6.8779e-08
+                      ]
+                    }
+                  }
+                }
+                Transform {
+                  translation 0 0.05 0
+                  rotation 1 0 0 -1.5707953071795862
+                  children [
+                    DEF ROTION_AXIS Shape {
+                      appearance PBRAppearance {
+                        baseColor 0 0 1
+                        roughness 1
+                      }
+                      geometry Cylinder {
+                        height 0.05
+                        radius 0.02
+                      }
+                    }
+                  ]
+                }
+              ]
+              name "HR_THIGH"
+              boundingObject Transform {
+                translation 0 0 -0.068
+                children [
+                  Box {
+                    size 0.07 0.04 0.216
+                  }
+                ]
+              }
+              physics Physics {
+                density -1
+                mass 0.5547
+                centerOfMass [
+                  -0.001516 0.024338 -0.016895
+                ]
+                inertiaMatrix [
+                  0.00069564 0.0008535 0.00020623
+                  9.4777e-07 -4.1533e-05 1.0433e-06
+                ]
+              }
+            }
+          }
+        ]
+        name "HR_HIP"
+        physics Physics {
+          density -1
+          mass 0.45879
+          centerOfMass [
+            -0.047901 0.0076 -0.000491
+          ]
+          inertiaMatrix [
+            0.0001497 0.00026266 0.00014559
+            1.1564e-07 3.5848e-06 -4.1425e-07
+          ]
+        }
+      }
+    }
+  ]
+  name "JY"
+  boundingObject Transform {
+    translation 0 0 -0.004
+    children [
+      Box {
+        size 0.236 0.184 0.092
+      }
+    ]
+  }
+  physics Physics {
+  }
+  controller "<extern>"
+}
+Robot {
+  name "supervisor"
+  controller "Supervisor"
+  supervisor TRUE
+}
